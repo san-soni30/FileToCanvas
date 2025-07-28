@@ -72,7 +72,7 @@ function generateCode() {
   const canvasJSON = canvas.toJSON();
 
   if (!includeBase64 && canvasJSON.backgroundImage) {
-    canvasJSON.backgroundImage.src = "https://example.com/image.png"; 
+    canvasJSON.backgroundImage.src = "https://example.com/image.png";
   }
 
   const json = JSON.stringify(canvasJSON, null, 2);

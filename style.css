@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   color: #333;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -37,7 +38,7 @@ body {
 
 h2 {
   text-align: center;
-  color: #d9534f; 
+  color: #d9534f;
   margin-bottom: 1.5rem;
 }
 
@@ -51,7 +52,7 @@ input[type="file"] {
   cursor: pointer;
   transition: background-color 0.3s ease;
   height: 45px;
-  width:240px;
+  width: 240px;
 }
 
 input[type="file"]:hover {
@@ -59,8 +60,6 @@ input[type="file"]:hover {
   border: 1px solid #d9534f;
   color: #d9534f;
 }
-
-
 
 textarea {
   width: 100%;
@@ -85,16 +84,16 @@ textarea.form-control:focus {
 }
 
 .form-check-input:checked {
-  background-color: #d9534f;   
+  background-color: #d9534f;
   border-color: #d9534f;
 }
 
 .form-check-input:focus {
-  box-shadow: 0 0 0 0.2rem rgba(217, 83, 79, 0.25); 
+  box-shadow: 0 0 0 0.2rem rgba(217, 83, 79, 0.25);
 }
 
-.clr{
-   display: block;
+.clr {
+  display: block;
   background-color: white;
   color: #d9534f;
   border-radius: 8px;
@@ -108,17 +107,20 @@ textarea.form-control:focus {
   color: white;
 }
 
-.cpy{
-   display: block;
+.cpy {
+  display: block;
   background-color: white;
-  color: #198754;;
+  color: #198754;
+  ;
   border-radius: 8px;
   cursor: pointer;
-  border: 1px solid #198754;;
+  border: 1px solid #198754;
+  ;
   transition: background-color 0.3s ease;
 }
 
 .cpy:hover {
-  background-color: #198754;;
+  background-color: #198754;
+  ;
   color: white;
 }
