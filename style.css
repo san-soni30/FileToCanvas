@@ -111,16 +111,13 @@ textarea.form-control:focus {
   display: block;
   background-color: white;
   color: #198754;
-  ;
   border-radius: 8px;
   cursor: pointer;
   border: 1px solid #198754;
-  ;
   transition: background-color 0.3s ease;
 }
 
 .cpy:hover {
   background-color: #198754;
-  ;
   color: white;
 }
