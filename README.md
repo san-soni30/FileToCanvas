@@ -74,7 +74,7 @@ Pull requests and improvements are welcome! If you'd like to add more file forma
 MIT License © 2025 Sanskruti Soni (https://github.com/san-soni30)
 
 🎥 Demo
-🌐 [Live Demo](https://youtu.be/1UgZpewTvVE)
+🌐 [Live Demo](https://youtu.be/os1d0dp5fiY)
 
 
 Happy coding! 💻✨
