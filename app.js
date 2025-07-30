@@ -30,7 +30,7 @@ function handleFile(e) {
       const typedarray = new Uint8Array(f.target.result);
       pdfjsLib.getDocument(typedarray).promise.then((pdf) => {
         pdf.getPage(1).then((page) => {
-          const viewport = page.getViewport({ scale: 2 });
+         const viewport = page.getViewport({ scale: 1 }); 
           const tempCanvas = document.createElement("canvas");
           const context = tempCanvas.getContext("2d");
           tempCanvas.width = viewport.width;
@@ -71,8 +71,16 @@ function generateCode() {
   const includeBase64 = document.getElementById("includeBase64").checked;
   const canvasJSON = canvas.toJSON();
 
-  if (!includeBase64 && canvasJSON.backgroundImage) {
+  if (canvasJSON.backgroundImage && !includeBase64) {
+  
     canvasJSON.backgroundImage.src = "https://example.com/image.png";
+  } else if (canvasJSON.backgroundImage && includeBase64) {
+    const base64String = canvasJSON.backgroundImage.src;
+
+    const base64SizeKB = (base64String.length * (3 / 4)) / 1024;
+    if (base64SizeKB > 500) {
+      alert("⚠️ Base64 image is too large (~" + Math.round(base64SizeKB) + " KB). Consider using a URL instead for better performance.");
+    }
   }
 
   const json = JSON.stringify(canvasJSON, null, 2);
