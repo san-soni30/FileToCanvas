@@ -92,7 +92,7 @@ textarea.form-control:focus {
   box-shadow: 0 0 0 0.2rem rgba(217, 83, 79, 0.25);
 }
 
-.clr {
+.danger {
   display: block;
   background-color: white;
   color: #d9534f;
@@ -102,12 +102,12 @@ textarea.form-control:focus {
   transition: background-color 0.3s ease;
 }
 
-.clr:hover {
+.danger:hover {
   background-color: #d9534f;
   color: white;
 }
 
-.cpy {
+.success {
   display: block;
   background-color: white;
   color: #198754;
@@ -117,7 +117,7 @@ textarea.form-control:focus {
   transition: background-color 0.3s ease;
 }
 
-.cpy:hover {
+.success:hover {
   background-color: #198754;
   color: white;
 }

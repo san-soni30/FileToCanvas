@@ -1,7 +1,6 @@
 const canvas = new fabric.Canvas("canvas");
 const fileInput = document.getElementById("fileInput");
 const codeOutput = document.getElementById("codeOutput");
-const convert = document.getElementById("convert");
 const generateBtnWrapper = document.getElementById("generateBtnWrapper");
 
 fileInput.addEventListener("change", handleFile);
@@ -36,17 +35,12 @@ function handleFile(e) {
           tempCanvas.width = viewport.width;
           tempCanvas.height = viewport.height;
 
-          page
-            .render({ canvasContext: context, viewport: viewport })
+          page.render({ canvasContext: context, viewport: viewport })
             .promise.then(() => {
               const imgData = tempCanvas.toDataURL("image/png");
-              convert.src = imgData;
               fabric.Image.fromURL(imgData, function (img) {
                 canvas.clear();
-                canvas.setBackgroundImage(
-                  img,
-                  canvas.renderAll.bind(canvas),
-                  {
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas),{
                     scaleX: canvas.width / img.width,
                     scaleY: canvas.height / img.height,
                   }
