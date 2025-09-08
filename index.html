@@ -8,60 +8,77 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet">
+
   </head>
-  <body class="bg-danger-subtle text-dark-emphasis p-4">
-    <div class="container bg-white p-4 rounded shadow">
-      <h2 class="mb-4 text-center text-danger">File to Canvas.js Converter</h2>
+  <body
+    class="bg-dark text-light d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="container bg-secondary p-4 rounded shadow mt-3 my-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text">File to Canvas.js Converter</h2>
+        <div class="dropdown">
+          <i class="fas fa-ellipsis-v text-light fs-4" data-bs-toggle="dropdown"
+            role="button" id="dotsMenu" style="cursor: pointer;"></i>
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+            aria-labelledby="dotsMenu">
+            <li><a class="dropdown-item" href="#" onclick="copyCode()">Copy
+                Code</a></li>
+            <li><a class="dropdown-item" href="#" onclick="clearCode()">Clear
+                Code</a></li>
+            <li><a class="dropdown-item" href="#"
+                onclick="downloadCode()">Download Code</a></li>
+            <li><a class="dropdown-item" href="#"
+                onclick="downloadImage()">Download Image</a></li>
+          </ul>
+        </div>
+
+      </div>
+
       <div class="row g-4">
-        <div class="col-md-6 border-end">
-          <div class="text-center">
-            <label for="fileInput" class="form-label fs-6">Select File (PNG,
-              JPG, JPEG, PDF):</label>
-            <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.pdf" />
-          </div>
-          <div class="mb-3">
-            <label for="promptInput" class="form-label">Enter Image
-              Prompt:</label>
-            <input type="text" id="promptInput" class="form-control"
-              placeholder="A robot walking on Mars" />
-          </div>
-          <div class="text-center">
-            <button onclick="generateImageFromPrompt()"
-              class="btn success">Generate Image from Prompt</button>
-          </div>
-          <div class="my-4 text-center">
-            <canvas id="canvas" width="300" height="200"
-              class="border rounded"></canvas>
-          </div>
-          <div id="generateBtnWrapper" class="text-center mt-3">
-            <button onclick="generateCode()" type="button" class="btn success ">
-              Generate Code
-            </button>
+        <div class="col-md-6 border-end border-info">
+          <label for="fileInput" class="form-label">Upload PNG, JPG, JPEG, or
+            PDF:</label>
+          <input type="file" id="fileInput" class="form-control mb-3"
+            accept=".png,.jpg,.jpeg,.pdf" />
+
+          <label for="promptInput" class="form-label">Or Generate Image from
+            Prompt:</label>
+          <input type="text" id="promptInput" class="form-control  mb-3"
+            placeholder="Enter a prompt" />
+          <button onclick="generateImageFromPrompt()"
+            class="btn btn-design w-30 mb-4 animate-fade-in">Generate
+            Image</button>
+
+          <canvas id="canvas" width="400" height="250"></canvas>
+          <div id="generateBtnWrapper" class="mt-3 d-none">
+            <button onclick="generateCode()" type="button"
+              class="btn  btn-design w-30 mb-4 animate-slide-in">Generate
+              Code</button>
           </div>
         </div>
+
         <div class="col-md-6">
-          <div class="mb-3">
-            <label for="codeOutput" class="form-label">Generated Canvas.js
-              Code:</label>
-            <textarea id="codeOutput" class="form-control" rows="10"
-              readonly></textarea>
-          </div>
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value
-              id="includeBase64">
-            <label class="form-check-label" for="includeBase64">
-              Include image as base64
-            </label>
-          </div>
-          <div class="d-flex gap-3">
-            <button onclick="copyCode()" type="button" class="btn success">Copy
-              Code</button>
-            <button onclick="clearCode()" type="button" class="btn danger">Clear
-              Code</button>
+          <label for="codeOutput" class="form-label">Generated Canvas.js
+            Code:</label>
+          <textarea id="codeOutput"
+            class="form-control bg-dark text-success font-monospace" rows="12"
+            readonly></textarea>
+
+          <div class="form-check form-switch my-3">
+            <input class="form-check-input" type="checkbox"
+              id="includeBase64" />
+            <label class="form-check-label" for="includeBase64">Include image as
+              base64</label>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Scripts -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script

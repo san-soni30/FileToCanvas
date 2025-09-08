@@ -79,16 +79,6 @@ function generateCode() {
   codeOutput.value = `const canvas = new fabric.Canvas('canvas');\ncanvas.loadFromJSON(${json})`;
 }
 
-function copyCode() {
-  codeOutput.select();
-  document.execCommand("copy");
-  alert("Canvas.js code copied to clipboard!");
-}
-
-function clearCode() {
-  codeOutput.value = "";
-}
-
 async function generateImageFromPrompt() {
   const prompt = document.getElementById("promptInput").value.trim();
   if (!prompt) {
@@ -97,12 +87,12 @@ async function generateImageFromPrompt() {
   }
 
   try {
-    const response = await fetch("https://san-soni30.app.n8n.cloud/webhook/image-generate", {
+    const response = await fetch("http://localhost:5678/webhook/image-generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ inputs: prompt })
+      body: JSON.stringify({ prompt })
     });
 
     if (!response.ok) throw new Error("Image generation failed.");
@@ -123,4 +113,47 @@ async function generateImageFromPrompt() {
     console.error(err);
     alert(err.message);
   }
+}
+
+function copyCode() {
+  codeOutput.select();
+  document.execCommand("copy");
+  alert("Canvas.js code copied to clipboard!");
+}
+
+function clearCode() {
+  codeOutput.value = "";
+}
+
+function downloadCode() {
+  const code = codeOutput.value;
+  const blob = new Blob([code], { type: "text/javascript" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "canvas-code.js";
+  link.click();
+}
+
+function downloadImage() {
+  const link = document.createElement("a");
+  link.href = canvas.toDataURL({ format: "png" });
+  link.download = "canvas-image.png";
+  link.click();
+}
+
+const colors = ["#bca919", "#cdb504", "#bdb46d"];
+for (let i = 0; i < 25; i++) {
+  const particle = document.createElement("div");
+  particle.classList.add("particle");
+
+  const size = Math.random() * 15 + 10;
+  particle.style.width = particle.style.height = size + "px";
+
+  particle.style.left = Math.random() * 100 + "vw";
+
+  particle.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+  particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+  document.body.appendChild(particle);
 }
