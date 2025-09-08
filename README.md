@@ -32,7 +32,7 @@ file-to-canvasjs-converter/
 
 ## 📸 Screenshot
 
-![Preview](preview.png)
+![Preview](image.png)
 
 ---
 
